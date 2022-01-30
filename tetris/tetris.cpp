@@ -499,6 +499,226 @@ struct Rotate {
 			this->pivot.push_back(*bodyBottomLeft1);
 			this->pivot.push_back(*bodyBottomLeft2);
 		}
+		else if (sp->shapeCode == 6) {
+			this->shapeCode = 14;
+
+			Position* bodyTopLeft1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTopLeft2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyTopRight1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTopRight2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[1].pos_y, ']');
+			Position* bodyBottom1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottom2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y + 1, ']');
+
+			this->position.push_back(*bodyTopLeft1);
+			this->position.push_back(*bodyTopLeft2);
+			this->position.push_back(*bodyTopRight1);
+			this->position.push_back(*bodyTopRight2);
+			this->position.push_back(*bodyMid1);
+			this->position.push_back(*bodyMid2);
+			this->position.push_back(*bodyBottom1);
+			this->position.push_back(*bodyBottom2);
+
+			//			 [][]
+			//  pivot -> []	
+			//           []
+			this->pivot.push_back(*bodyMid1);
+			this->pivot.push_back(*bodyMid2);
+		}
+		else if (sp->shapeCode == 14) {
+			this->shapeCode = 15;
+
+			Position* bodyTopLeft1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y, '[');
+			Position* bodyTopLeft2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y, ']');
+			Position* bodyTopMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyTopMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y, ']');
+			Position* bodyTopRight1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y, '[');
+			Position* bodyTopRight2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y, ']');
+			Position* bodyBottom1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottom2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y + 1, ']');
+
+			this->position.push_back(*bodyTopLeft1);
+			this->position.push_back(*bodyTopLeft2);
+			this->position.push_back(*bodyTopMid1);
+			this->position.push_back(*bodyTopMid2);
+			this->position.push_back(*bodyTopRight1);
+			this->position.push_back(*bodyTopRight2);
+			this->position.push_back(*bodyBottom1);
+			this->position.push_back(*bodyBottom2);
+
+			//    pivot
+			//    |
+			//  [][][]
+			//      []
+			this->pivot.push_back(*bodyTopMid1);
+			this->pivot.push_back(*bodyTopMid2);
+		}
+		else if (sp->shapeCode == 15) {
+			this->shapeCode = 16;
+
+			Position* bodyTop1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTop2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[1].pos_y, ']');
+			Position* bodyBottomLeft1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottomLeft2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y + 1, ']');
+			Position* bodyBottomRight1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottomRight2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y + 1, ']');
+
+			this->position.push_back(*bodyTop1);
+			this->position.push_back(*bodyTop2);
+			this->position.push_back(*bodyMid1);
+			this->position.push_back(*bodyMid2);
+			this->position.push_back(*bodyBottomLeft1);
+			this->position.push_back(*bodyBottomLeft2);
+			this->position.push_back(*bodyBottomRight1);
+			this->position.push_back(*bodyBottomRight2);
+
+			//    []
+			//    [] <- pivot
+			//  [][]
+			this->pivot.push_back(*bodyMid1);
+			this->pivot.push_back(*bodyMid2);
+		}
+		else if (sp->shapeCode == 16) {
+			this->shapeCode = 6;
+
+			Position* bodyTop1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTop2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyBottomLeft1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y, '[');
+			Position* bodyBottomLeft2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y, ']');
+			Position* bodyBottomMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyBottomMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y, ']');
+			Position* bodyBottomRight1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y, '[');
+			Position* bodyBottomRight2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y, ']');
+
+			this->position.push_back(*bodyTop1);
+			this->position.push_back(*bodyTop2);
+			this->position.push_back(*bodyBottomLeft1);
+			this->position.push_back(*bodyBottomLeft2);
+			this->position.push_back(*bodyBottomMid1);
+			this->position.push_back(*bodyBottomMid2);
+			this->position.push_back(*bodyBottomRight1);
+			this->position.push_back(*bodyBottomRight2);
+
+			//  []
+			//  [][][]
+			//    ^
+			//   pivot
+			this->pivot.push_back(*bodyBottomMid1);
+			this->pivot.push_back(*bodyBottomMid2);
+		}
+		else if (sp->shapeCode == 7) {
+			this->shapeCode = 17;
+
+			Position* bodyTop1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTop2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y, ']');
+			Position* bodyBottomLeft1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottomLeft2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y + 1, ']');
+			Position* bodyBottomRight1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottomRight2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y + 1, ']');
+
+			this->position.push_back(*bodyTop1);
+			this->position.push_back(*bodyTop2);
+			this->position.push_back(*bodyMid1);
+			this->position.push_back(*bodyMid2);
+			this->position.push_back(*bodyBottomLeft1);
+			this->position.push_back(*bodyBottomLeft2);
+			this->position.push_back(*bodyBottomRight1);
+			this->position.push_back(*bodyBottomRight2);
+
+			//           []
+			//  pivot -> []
+			//           [][]
+			this->pivot.push_back(*bodyMid1);
+			this->pivot.push_back(*bodyMid2);
+		}
+		else if (sp->shapeCode == 17) {
+			this->shapeCode = 18;
+
+			Position* bodyTopLeft1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y, '[');
+			Position* bodyTopLeft2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y, ']');
+			Position* bodyTopMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyTopMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y, ']');
+			Position* bodyTopRight1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y, '[');
+			Position* bodyTopRight2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y, ']');
+			Position* bodyBottom1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottom2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y + 1, ']');
+
+			this->position.push_back(*bodyTopLeft1);
+			this->position.push_back(*bodyTopLeft2);
+			this->position.push_back(*bodyTopMid1);
+			this->position.push_back(*bodyTopMid2);
+			this->position.push_back(*bodyTopRight1);
+			this->position.push_back(*bodyTopRight2);
+			this->position.push_back(*bodyBottom1);
+			this->position.push_back(*bodyBottom2);
+
+			//    pivot
+			//    |
+			//  [][][]
+			//  []
+			this->pivot.push_back(*bodyTopMid1);
+			this->pivot.push_back(*bodyTopMid2);
+		}
+		else if (sp->shapeCode == 18) {
+			this->shapeCode = 19;
+
+			Position* bodyTopLeft1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTopLeft2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyTopRight1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTopRight2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y, ']');
+			Position* bodyBottom1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y + 1, '[');
+			Position* bodyBottom2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y + 1, ']');
+
+			this->position.push_back(*bodyTopLeft1);
+			this->position.push_back(*bodyTopLeft2);
+			this->position.push_back(*bodyTopRight1);
+			this->position.push_back(*bodyTopRight2);
+			this->position.push_back(*bodyMid1);
+			this->position.push_back(*bodyMid2);
+			this->position.push_back(*bodyBottom1);
+			this->position.push_back(*bodyBottom2);
+
+			//  [][]
+			//    [] <- pivot
+			//    []
+			this->pivot.push_back(*bodyMid1);
+			this->pivot.push_back(*bodyMid2);
+		}
+		else if (sp->shapeCode == 19) {
+			this->shapeCode = 7;
+
+			Position* bodyTop1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y - 1, '[');
+			Position* bodyTop2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y - 1, ']');
+			Position* bodyBottomLeft1 = new Position(sp->pivot[0].pos_x - 2, sp->pivot[0].pos_y, '[');
+			Position* bodyBottomLeft2 = new Position(sp->pivot[0].pos_x - 1, sp->pivot[0].pos_y, ']');
+			Position* bodyBottomMid1 = new Position(sp->pivot[0].pos_x, sp->pivot[0].pos_y, '[');
+			Position* bodyBottomMid2 = new Position(sp->pivot[1].pos_x, sp->pivot[0].pos_y, ']');
+			Position* bodyBottomRight1 = new Position(sp->pivot[0].pos_x + 2, sp->pivot[0].pos_y, '[');
+			Position* bodyBottomRight2 = new Position(sp->pivot[0].pos_x + 3, sp->pivot[0].pos_y, ']');
+
+			this->position.push_back(*bodyTop1);
+			this->position.push_back(*bodyTop2);
+			this->position.push_back(*bodyBottomLeft1);
+			this->position.push_back(*bodyBottomLeft2);
+			this->position.push_back(*bodyBottomMid1);
+			this->position.push_back(*bodyBottomMid2);
+			this->position.push_back(*bodyBottomRight1);
+			this->position.push_back(*bodyBottomRight2);
+
+			//      []
+			//  [][][]
+			//    ^
+			//   pivot
+			this->pivot.push_back(*bodyBottomMid1);
+			this->pivot.push_back(*bodyBottomMid2);
+		}
 	}
 };
 
