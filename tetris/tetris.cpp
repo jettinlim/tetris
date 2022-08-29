@@ -520,7 +520,7 @@ struct Rotate {
 			this->position.push_back(*bodyBottom1);
 			this->position.push_back(*bodyBottom2);
 
-			//			 [][]
+			//	     [][]
 			//  pivot -> []	
 			//           []
 			this->pivot.push_back(*bodyMid1);
